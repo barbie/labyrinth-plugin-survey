@@ -82,7 +82,7 @@
         }
     },
     "no_index": {
-        "directory": ["t","examples","vhost"]
+        "directory": ["t","examples","specifications","vhost"]
     },
 
     "resources": {

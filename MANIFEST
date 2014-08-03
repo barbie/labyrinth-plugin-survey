@@ -12,6 +12,9 @@ MANIFEST
 META.json
 META.yml
 README
+specifications/YAPC-Survey-spec-1.0.txt
+specifications/YAPC-Survey-spec-1.1.txt
+specifications/YAPC-Survey-spec-1.2.txt
 t/00use.t
 t/90podtest.t
 t/91podcover.t
