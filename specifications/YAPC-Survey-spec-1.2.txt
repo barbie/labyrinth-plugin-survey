@@ -58,7 +58,7 @@ SYNOPSIS
              preamble: "If 'Other' please enter your professional job title:"
  meta-spec:
    version: 1.2
-   url: http://yapc-surveys.org/specifications/YAPC-Survey-spec-v1.2.txt
+   url: http://yapc-surveys.org/specifications/YAPC-Survey-spec-1.2.txt
 
 DESCRIPTION
 
@@ -99,7 +99,7 @@ Example:
 
  meta-spec:
    version: 1.2
-   url: http://yapc-surveys.org/specifications/YAPC-Survey-spec-v1.2.txt
+   url: http://yapc-surveys.org/specifications/YAPC-Survey-spec-1.2.txt
 
 (Spec 1.0) [required] {URL} This field indicates the location of the version of the SURVEY.yml specification used.
 
