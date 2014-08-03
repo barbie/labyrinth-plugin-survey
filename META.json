@@ -1,6 +1,6 @@
 {
     "name": "Labyrinth-Plugin-Survey",
-    "version": "0.02",
+    "version": "0.03",
     "abstract": "YAPC Surveys plugin for the Labyrinth framework",
     "author": [
         "Barbie (BARBIE) <barbie@cpan.org>"
@@ -58,27 +58,27 @@
     "provides": {
         "Labyrinth::Plugin::Survey": {
             "file": "lib/Labyrinth/Plugin/Survey.pm",
-            "version": "0.02"
+            "version": "0.03"
         },
         "Labyrinth::Plugin::Survey::Act::API": {
             "file": "lib/Labyrinth/Plugin/Survey/Act/API.pm",
-            "version": "0.02"
+            "version": "0.03"
         },
         "Labyrinth::Plugin::Survey::Announce": {
             "file": "lib/Labyrinth/Plugin/Survey/Announce.pm",
-            "version": "0.02"
+            "version": "0.03"
         },
         "Labyrinth::Plugin::Survey::Course": {
             "file": "lib/Labyrinth/Plugin/Survey/Course.pm",
-            "version": "0.02"
+            "version": "0.03"
         },
         "Labyrinth::Plugin::Survey::Talk": {
             "file": "lib/Labyrinth/Plugin/Survey/Talk.pm",
-            "version": "0.02"
+            "version": "0.03"
         },
         "Labyrinth::Plugin::Survey::YAPC": {
             "file": "lib/Labyrinth/Plugin/Survey/YAPC.pm",
-            "version": "0.02"
+            "version": "0.03"
         }
     },
     "no_index": {
