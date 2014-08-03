@@ -21,3 +21,5 @@ t/91podcover.t
 t/94metatest.t
 t/95changedate.t
 t/96metatest.t
+vhost/cgi-bin/db/survey-base.sql
+vhost/cgi-bin/db/survey-schema.sql
