@@ -1,6 +1,8 @@
 Changes for Labyrinth-Plugin-Survey
 ===================================
 
+        - added vhost files for base survey site.
+
 0.03	2014-08-16
         - added SQL schema files.
 

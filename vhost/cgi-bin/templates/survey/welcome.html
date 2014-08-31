@@ -1,0 +1,121 @@
+<h2>The [% yapc_name %] Conference Surveys</h2>
+
+[% IF loggedin %]
+
+<div class="newsbox">
+<p>From here you can access and complete surveys pertaining to the [% yapc_name %] Perl Conference.</p>
+<p>As you complete a survey, that survey will become unavailable, thus allowing you to keep a track of 
+what surveys you have and haven't completed. Further information about the surveys please see the
+<a href="http://yapc-surveys.org/about.html">About the Surveys</a> page on the official site.</p>
+<p>
+Best regards,<br />
+[% yapc_host %]<br />
+[% yapc_city %]<br />
+</div>
+
+[% IF survey_end %]
+<div class="closed">Surveys now closed.</div>
+[% END %]
+
+<h2>Conference Survey</h2>
+<div class="newsbox">
+<ul>
+[% IF survey_end %]
+[% IF data.survey.createdate %]
+<li><span class="strike">[% yapc_name %] Conference Survey</span></li>
+[% ELSE %]
+<li>[% yapc_name %] Conference Survey</li>
+[% END %]
+[% ELSE %]
+[% IF survey_start %]
+[% IF data.survey.createdate %]
+<li><span class="strike seen">[% yapc_name %] Conference Survey</span></li>
+[% ELSE %]
+<li><a href="/survey/[% loginid %]">[% yapc_name %] Conference Survey</a></li>
+[% END %]
+[% ELSE %]
+<li>[% yapc_name %] Conference Survey <span class="alert">(unavailable until [% survey_open %])</span></li>
+[% END %]
+[% END %]
+</ul>
+</div>
+
+[% IF data.courses %]
+<h2>Course Evaluation Surveys</h2>
+<div class="newsbox">
+[% IF ! course_start %]
+<p class="alert">Please note these surveys are unavailable until [% course_open %].</p>
+[% END %]
+<ul>
+[%  FOREACH item = data.courses %]
+[% IF survey_end %]
+[% IF item.createdate %]
+<li><span class="strike seen">[% item.course %] by [% item.tutor %]</span></li>
+[% ELSE %]
+<li>[% item.course %] by [% item.tutor %]</li>
+[% END %]
+[% ELSE %]
+[% IF course_start %]
+[% IF item.createdate %]
+<li><span class="strike seen">[% item.course %] by [% item.tutor %]</span></li>
+[% ELSE %]
+<li><a href="/course/[% item.courseid %]">[% item.course %]</a> by [% item.tutor %]</li>
+[% END %]
+[% ELSE %]
+<li>[% item.course %] by [% item.tutor %]</li>
+[% END %]
+[% END %]
+[% END %]
+</ul>
+</div>
+[% END %]
+
+[% IF data.talks %]
+<h2>Talk Evaluations</h2>
+<div class="newsbox">
+[% IF ! talks_start %]
+<p class="alert">Please note these evaluations are unavailable until [% talks_open %].</p>
+[% ELSE %]
+<p>Note that each Talk Evaluation is enabled after the the start of the talk it refers to.</p>
+[% END %]
+[%  FOREACH day = data.talks %]
+<h3>[% day.date %]</h3>
+<ul>
+[% FOREACH item = day.talks %]
+[% IF survey_end %]
+[% IF item.createdate %]
+<li><span class="strike seen">[% item.course %] by [% item.tutor %]</span></li>
+[% ELSE %]
+<li>[% item.course %] by [% item.tutor %]</li>
+[% END %]
+[% ELSE %]
+[% IF talks_start && item.datetime < talks_time %]
+[% IF item.createdate %]
+<li><span class="strike seen">[% item.course %] by [% item.tutor %]</span></li>
+[% ELSE %]
+<li><a href="/talk/[% item.courseid %]">[% item.course %]</a> by [% item.tutor %]</li>
+[% END %]
+[% ELSE %]
+<li>[% item.course %] by [% item.tutor %]</li>
+[% END %]
+[% END %]
+[% END %]
+</ul>
+[% END %]
+</div>
+[% END %]
+
+[% ELSE %]
+
+<div class="newsbox">
+<p>
+This is the survey site for [% yapc_name %]. In order to access the various surveys available, please use the link 
+containing your key sent to your registered email address. If you are unable to access this key, please see Barbie 
+during the conference or email the <a href="mailto:[% administrator %]">administrator</a>.
+<p>
+Best regards,<br />
+[% yapc_host %]<br />
+[% yapc_city %]<br />
+</div>
+
+[% END %]
