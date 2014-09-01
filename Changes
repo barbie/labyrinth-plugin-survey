@@ -3,6 +3,7 @@ Changes for Labyrinth-Plugin-Survey
 
         - reworked survey sorting.
         - switch dates to W3CDTF standard.
+        - CSS fixes.
 
 0.04	2014-09-05
         - added vhost files for base survey site.
