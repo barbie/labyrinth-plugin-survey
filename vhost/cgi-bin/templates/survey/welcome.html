@@ -21,14 +21,14 @@ Best regards,<br />
 <div class="newsbox">
 <ul>
 [% IF survey_end %]
-[% IF data.survey.createdate %]
+[% IF data.survey.completed %]
 <li><span class="strike">[% yapc_name %] Conference Survey</span></li>
 [% ELSE %]
 <li>[% yapc_name %] Conference Survey</li>
 [% END %]
 [% ELSE %]
 [% IF survey_start %]
-[% IF data.survey.createdate %]
+[% IF data.survey.completed %]
 <li><span class="strike seen">[% yapc_name %] Conference Survey</span></li>
 [% ELSE %]
 <li><a href="/survey/[% loginid %]">[% yapc_name %] Conference Survey</a></li>
@@ -49,14 +49,14 @@ Best regards,<br />
 <ul>
 [%  FOREACH item = data.courses %]
 [% IF survey_end %]
-[% IF item.createdate %]
+[% IF item.completed %]
 <li><span class="strike seen">[% item.course %] by [% item.tutor %]</span></li>
 [% ELSE %]
 <li>[% item.course %] by [% item.tutor %]</li>
 [% END %]
 [% ELSE %]
 [% IF course_start %]
-[% IF item.createdate %]
+[% IF item.completed %]
 <li><span class="strike seen">[% item.course %] by [% item.tutor %]</span></li>
 [% ELSE %]
 <li><a href="/course/[% item.courseid %]">[% item.course %]</a> by [% item.tutor %]</li>
@@ -83,14 +83,14 @@ Best regards,<br />
 <ul>
 [% FOREACH item = day.talks %]
 [% IF survey_end %]
-[% IF item.createdate %]
+[% IF item.completed %]
 <li><span class="strike seen">[% item.course %] by [% item.tutor %]</span></li>
 [% ELSE %]
 <li>[% item.course %] by [% item.tutor %]</li>
 [% END %]
 [% ELSE %]
 [% IF talks_start && item.datetime < talks_time %]
-[% IF item.createdate %]
+[% IF item.completed %]
 <li><span class="strike seen">[% item.course %] by [% item.tutor %]</span></li>
 [% ELSE %]
 <li><a href="/talk/[% item.courseid %]">[% item.course %]</a> by [% item.tutor %]</li>
