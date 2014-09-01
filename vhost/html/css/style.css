@@ -1,4 +1,4 @@
-//* General settings */
+/* General settings */
 
 @media print { #menuleft, #menu, #menuright, #sponsor { display: none; } }
 
@@ -169,33 +169,16 @@ a img {
 }
 
 
-// Amendments to work with the survey layout
+/* Amendments to work with the survey layout */
 
-#main-body {
-	width: 530px;
-	float: left;
-}
+#main-body    { width: 530px; float: left; }
+#right-column { width: 170px; }
+#left-column  { width: 726px; }
+.sidebar      { width: 170px; padding: 10px 0px; }
 
-.sidebar {
-    width: 170px;
-    padding: 10px 0px;
-}
-
-#right-column {
-    width: 170px;
-}
-
-#left-column {
-    width: 726px;
-}
-
-.strike {
-    text-decoration: line-through;
-}
-
-.seen {
-    color: #666;
-}
+.strike   { text-decoration: line-through; }
+.seen     { color: #666; }
+.clear    { clear: both; }
 
 #footer         { margin: 10px 0; border-top: 1px solid #333; font-size: 8pt; }
 #footer-left    { float: left; padding: 10px 0; }
