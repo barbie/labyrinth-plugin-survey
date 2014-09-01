@@ -99,6 +99,7 @@ vhost/html/favicon.png
 vhost/html/images/layout/large-header-bg.png
 vhost/html/images/layout/perl.png
 vhost/html/images/layout/tpf.png
+vhost/html/js/survey.js
 vhost/toolkit/notify/act-addtalks.pl
 vhost/toolkit/notify/act-addusers.pl
 vhost/toolkit/notify/add-courses.pl
