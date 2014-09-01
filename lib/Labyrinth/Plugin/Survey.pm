@@ -313,8 +313,8 @@ sub Welcome {
 sub CheckOpenTimes {
     for my $dt (qw(survey_start course_start talks_start survey_end)) {
         #LogDebug("CheckOpenTimes: $dt=$tvars{$dt}");
-        if($tvars{$dt} && $tvars{$dt} =~ /(\d{2})\W(\d{2})\W(\d{4})\W(\d{2})\W(\d{2})\W(\d{2})/) {
-            my $t = timelocal(int($6),int($5),int($4),int($1),int($2-1),int($3-1900));
+        if($tvars{$dt} && $tvars{$dt} =~ /(\d{4})\W(\d{2})\W(\d{2})\W(\d{2})\W(\d{2})\W(\d{2})/) {
+            my $t = timelocal(int($6),int($5),int($4),int($3),int($2-1),int($1-1900));
             my $n = time + $settings{timezone_offset};
 
         LogDebug("CheckOpenTimes: dt=$dt, $tvars{$dt}, t=$t, n=$n");

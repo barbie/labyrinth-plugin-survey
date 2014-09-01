@@ -145,9 +145,9 @@ sub LoadTalks {
         $rooms{$k} = $v;
     }
 
-    my ($d,$m,$y) = $settings{talks_start} =~ /^(\d+)\D(\d+)\D(\d+)\D/;
+    my ($y,$m,$d) = $settings{talks_start} =~ /^(\d+)\D(\d+)\D(\d+)\D/;
     $tvars{yapc}{talks_start} = timegm(0,0,0,$d,$m-1,$y);
-    ($d,$m,$y) = $settings{survey_start} =~ /^(\d+)\D(\d+)\D(\d+)\D/;
+    ($y,$m,$d) = $settings{survey_start} =~ /^(\d+)\D(\d+)\D(\d+)\D/;
     $tvars{yapc}{talks_end} = timegm(23,59,59,$d,$m-1,$y);
 
     # get data

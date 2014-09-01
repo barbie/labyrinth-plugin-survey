@@ -169,8 +169,8 @@ sub differant {
 
 sub split_dates {
     my ($start,$end) = @_;
-    my ($d1,$m1,$y1) = split('/',$start);
-    my ($d2,$m2,$y2) = split('/',$end);
+    my ($y1,$m1,$d1) = split(/\D+/,$start);
+    my ($y2,$m2,$d2) = split(/\D+/,$end);
 
     return ($d1,$d2,$m2,$y2);
 }
