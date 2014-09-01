@@ -203,6 +203,8 @@ a img {
 #footer-text    { margin: 0 auto; width: 600px; border: 0px solid #f00; padding: 10px 10px 20px 10px; text-align: center; }
 #footer a       { text-decoration: none; font-weight: bold; }
 
+#menu           { font-size: 11pt; }
+
 #menu ul {
   margin:0;
   padding:10px 0 0 10px;
