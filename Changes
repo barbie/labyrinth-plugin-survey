@@ -1,6 +1,8 @@
 Changes for Labyrinth-Plugin-Survey
 ===================================
 
+        - reworked survey sorting.
+
 0.04	2014-09-05
         - added vhost files for base survey site.
         - fixed license fields in META.json to be lists.

@@ -221,12 +221,11 @@ sub Resend {
     return  unless AccessUser($LEVEL);
     return  unless AuthorCheck($GETSQL,$INDEXKEY,$LEVEL);
 
-    my $sort;
-    if($cgiparams{sortname}) {
-        $sort = "ORDER BY u.$cgiparams{sortname} ";
-        $sort .= $cgiparams{sorttype} ? 'ASC' : 'DESC';
-        $tvars{sorttype} = $cgiparams{sorttype} ? 0 : 1;
-    }
+    $cgiparams{sortname} ||= 'realname';
+
+    my $sort = "ORDER BY u.$cgiparams{sortname} ";
+    $sort .= $cgiparams{sorttype} ? 'ASC' : 'DESC';
+    $tvars{sorttype} = $cgiparams{sorttype} ? 0 : 1;
 
     my @users = $dbi->GetQuery('hash','ListAnnounceSent',{'sort' => $sort},$cgiparams{$INDEXKEY});
     $tvars{users} = \@users if(@users)
@@ -236,12 +235,11 @@ sub Unsent {
     return  unless AccessUser($LEVEL);
     return  unless AuthorCheck($GETSQL,$INDEXKEY,$LEVEL);
 
-    my $sort;
-    if($cgiparams{sortname}) {
-        $sort = "ORDER BY u.$cgiparams{sortname} ";
-        $sort .= $cgiparams{sorttype} ? 'ASC' : 'DESC';
-        $tvars{sorttype} = $cgiparams{sorttype} ? 0 : 1;
-    }
+    $cgiparams{sortname} ||= 'realname';
+
+    my $sort = "ORDER BY u.$cgiparams{sortname} ";
+    $sort .= $cgiparams{sorttype} ? 'ASC' : 'DESC';
+    $tvars{sorttype} = $cgiparams{sorttype} ? 0 : 1;
 
     my @users = $dbi->GetQuery('hash','ListAnnounceUnsent',{'sort' => $sort},$cgiparams{$INDEXKEY});
     $tvars{users} = \@users if(@users);
@@ -252,12 +250,11 @@ sub Done {
     return  unless AccessUser($LEVEL);
     return  unless AuthorCheck($GETSQL,$INDEXKEY,$LEVEL);
 
-    my $sort = 'ORDER BY completed ';
-    if($cgiparams{sortname}) {
-        $sort = "ORDER BY u.$cgiparams{sortname} ";
-        $sort .= $cgiparams{sorttype} ? 'ASC' : 'DESC';
-        $tvars{sorttype} = $cgiparams{sorttype} ? 0 : 1;
-    }
+    $cgiparams{sortname} ||= 'realname';
+
+    my $sort = "ORDER BY u.$cgiparams{sortname} ";
+    $sort .= $cgiparams{sorttype} ? 'ASC' : 'DESC';
+    $tvars{sorttype} = $cgiparams{sorttype} ? 0 : 1;
 
     my @users = $dbi->GetQuery('hash','AdminSurveys',{'sort' => $sort});
     $tvars{users} = \@users if(@users)
@@ -267,12 +264,11 @@ sub Undone {
     return  unless AccessUser($LEVEL);
     return  unless AuthorCheck($GETSQL,$INDEXKEY,$LEVEL);
 
-    my $sort;
-    if($cgiparams{sortname}) {
-        $sort = "ORDER BY u.$cgiparams{sortname} ";
-        $sort .= $cgiparams{sorttype} ? 'ASC' : 'DESC';
-        $tvars{sorttype} = $cgiparams{sorttype} ? 0 : 1;
-    }
+    $cgiparams{sortname} ||= 'realname';
+
+    my $sort = "ORDER BY u.$cgiparams{sortname} ";
+    $sort .= $cgiparams{sorttype} ? 'ASC' : 'DESC';
+    $tvars{sorttype} = $cgiparams{sorttype} ? 0 : 1;
 
     my @users = $dbi->GetQuery('hash','AdminSurveyNot',{'sort' => $sort});
     $tvars{users} = \@users if(@users)

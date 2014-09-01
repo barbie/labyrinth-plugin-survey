@@ -340,7 +340,7 @@ Loads the data when presenting the survey management pages.
 
 sub Admin {
     return  unless AccessUser(ADMIN);
-    my @surveys = $dbi->GetQuery('hash','AdminSurveys',{'sort' => 'ORDER BY completed'});
+    my @surveys = $dbi->GetQuery('hash','AdminSurveys',{'sort' => 'ORDER BY u.realname'});
     my @courses = $dbi->GetQuery('hash','AdminCourses');
     my @talks   = $dbi->GetQuery('hash','AdminTalks');
 
