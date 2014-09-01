@@ -197,10 +197,10 @@ a img {
     color: #666;
 }
 
-#footer         { margin: 10px 0; border-top: 1px solid #333; font-size: 80%; }
+#footer         { margin: 10px 0; border-top: 1px solid #333; font-size: 8pt; }
 #footer-left    { float: left; padding: 10px 0; }
 #footer-right   { float: right; padding: 10px 0; }
-#footer-text    { margin: 0 auto; width: 600px; border: 0px solid #f00; padding: 10px 10px 20px 10px; text-align: center; }
+#footer-text    { margin: 0 auto; width: 700px; border: 0px solid #f00; padding: 10px 10px 20px 10px; text-align: center; }
 #footer a       { text-decoration: none; font-weight: bold; }
 
 #menu           { font-size: 11pt; }
