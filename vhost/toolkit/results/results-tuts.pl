@@ -152,7 +152,7 @@ sub process {
         }
 
         $course->{tutor} =~ s/[- \.]+$//;
-        my $email = _find_user($course->{tutor});
+        my $email = _find_user($course->{actuserid},$course->{tutor});
         unless($email) {
             print STDERR "ENOMAIL: $course->{course}\n";
             print STDERR "         tutor=[$course->{tutor}]\n";
@@ -230,32 +230,29 @@ sub process {
 
 
 sub _find_user {
-    my ($name,$nick) = @_;
-    my ($e1,$e2,$e3,$e4);
+    my ($userid,$name) = @_;
+    my $id;
 
-    return $options{moderator}  if($course->{tutor} eq 'Moderator');
+    #return $options{moderator}  if($course->{tutor} eq 'Moderator');
     return $options{email}      if($options{tutor} && $options{email});
 
     for my $user (@users) {
-        if(defined $user->{realname} && defined $name) {
+        if(defined $user->{actuserid} && defined $userid) {
+            $id ||= $user->{email}  if($user->{actuserid} == $userid);
+
+        } elsif(defined $user->{realname} && defined $name) {
             return $user->{email}   if($user->{realname} eq $name);
-            $e1 ||= $user->{email}  if($user->{realname} =~ /$name/);
-        }
+            $id ||= $user->{email}  if($user->{realname} =~ /$name/);
 
-        if(defined $user->{nickname} && defined $name) {
+        } elsif(defined $user->{nickname} && defined $name) {
             return $user->{email}   if($user->{nickname} eq $name);
-            $e2 ||= $user->{email}  if($user->{nickname} =~ /$name/);
+            $id ||= $user->{email}  if($user->{nickname} =~ /$name/);
         }
 
-        if(defined $user->{realname} && defined $nick) {
-            $e3 ||= $user->{email}  if($user->{realname} =~ /$nick/);
-        }
-        if(defined $user->{nickname} && defined $nick) {
-            $e4 ||= $user->{email}  if($user->{nickname} =~ /$nick/);
-        }
+        return $id if($id);
     }
 
-    return $e1 || $e2 || $e3 || $e4;
+    return;
 }
 
 
