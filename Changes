@@ -1,6 +1,8 @@
 Changes for Labyrinth-Plugin-Survey
 ===================================
 
+        - list of courses/talks should not be based on room allocation.
+
 0.05	2014-09-13
         - reworked survey sorting.
         - switch dates to W3CDTF standard.
