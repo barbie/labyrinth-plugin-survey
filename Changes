@@ -2,6 +2,7 @@ Changes for Labyrinth-Plugin-Survey
 ===================================
 
         - list of courses/talks should not be based on room allocation.
+        - added filters to only send feedback for specific talk types.
 
 0.05	2014-09-13
         - reworked survey sorting.

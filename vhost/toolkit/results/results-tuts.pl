@@ -54,7 +54,7 @@ my %LABEL = (
 );
 
 my $TARGET = './results';
-my (@users,%options);
+my (@users,%options,%filter);
 
 $Text::Wrap::columns = 72;
 
@@ -102,7 +102,15 @@ results_talks();
 # The Subs
 
 sub init {
-    GetOptions(\%options, 'tutor=s', 'email=s', 'live', 'test', 'moderator=s');
+    GetOptions(\%options,
+        'tutor=s',
+        'email=s',
+        'live',
+        'test',
+        'courses',
+        'talks',
+        'lightning',
+        'moderator=s');
 
     MailSet(mailsend => $settings{mailsend}, logdir => $settings{logdir});
     $tvars{survey} = $plugin->LoadSurvey($settings{'evaluate'});
@@ -116,6 +124,10 @@ sub init {
     $options{test} = 1  if($options{moderator});
     $options{moderator} ||= $settings{moderator};
     $options{moderator} ||= $MODERATOR;
+
+    $filter{ 0 } = 1 if($options{courses});
+    $filter{ 1 } = 1 if($options{talks});
+    $filter{ 2 } = 1 if($options{lightning});
 }
 
 sub process {
@@ -128,6 +140,9 @@ sub process {
         next    if($ignore{$course->{courseid}});
         #print STDERR "tutor=$course->{tutor}, course=[$course->{courseid}] $course->{course}\n";
         next    if($options{tutor} && $course->{tutor} ne $options{tutor});
+
+        # are we allowing this talk type?
+        next    if(%filter && !$filter{ $course->{talk} });
 
         $course->{tutor} = 'Moderator'  if($options{test});
 
