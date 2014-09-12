@@ -308,6 +308,7 @@ sub Welcome {
     my @talks = map {$talks{$_}} sort keys %talks;
     $tvars{data}{talks} = \@talks   if(@talks);
     $tvars{talks_time} = time;
+    $tvars{thanks} = $cgiparams{thanks};
 }
 
 sub CheckOpenTimes {
