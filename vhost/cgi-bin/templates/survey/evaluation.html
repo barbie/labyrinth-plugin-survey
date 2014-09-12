@@ -11,7 +11,7 @@
 
 [% IF data.submitted %]
 
-<div class="newsbox">
+<div class="newsbox intro">
 
 <p>You have already completed your assessment form for this [% section %]. As 
 the assessment results are recorded anonymously, we are unable to retrieve your
@@ -29,13 +29,13 @@ Best regards,<br />
 
 [% ELSIF data.thanks == 1 %]
 
-<div class="newsbox">
+<div class="newsbox intro">
 
 <p>Many thanks for completing your assessment form for this [% section %]. The 
 results will be provided to the [% section %] presenter, to enable them to 
 improve the presentation for future attendees.</p>
 
-<p>Return to the <a href="/">survey index</a>.</p>
+<p>You will be redirected in a few seconds. If this does not happen, please <a href="/?thanks=1">click here</a> to return to the <a href="/">survey index</a>.</p>
 
 <p>
 Best regards,<br />
@@ -46,7 +46,7 @@ Best regards,<br />
 
 [% ELSIF data.thanks == 2 %]
 
-<div class="newsbox">
+<div class="newsbox intro">
 
 <p>It appears you submitted a blank assessment form. Please click back in your browser
 and enter a completed form, or <a href="/">return to the survey index</a> to 
@@ -62,9 +62,8 @@ Best regards,<br />
 [% ELSE %]
 
 [% IF NOT errmess %]
-<div class="newsbox">
-<h2>Dear Attendee,</h2>
-
+<div class="newsbox intro">
+<h3>Dear Attendee,</h3>
 <p>We would like to invite you to complete the following [% section %] assessment form
 as best you can. Our aim is to to help the [% section %] presenter to improve their 
 presentation for future attendees.</p>
@@ -84,10 +83,8 @@ submissions will close at <b>midnight on [% survey_close %]</b>.</p>
 </div>
 [% END %]
 
-<h2>[% title %] Assessment Form</h2>
-<div class="newsbox">
-<h2>'[% course.title %]' by [% course.tutor %]</h2>
-</div>
+<h2 class="intro">'[% course.title %]' by [% course.tutor %]</h2>
+<h3>[% title %] Assessment Form</h3>
 
 <div>
 <form id="SURVEY" name="SURVEY" method="post" action="/submit/[% section %]" enctype="multipart/form-data" onsubmit="return check_submission();">
@@ -97,7 +94,7 @@ submissions will close at <b>midnight on [% survey_close %]</b>.</p>
 
 <div id="survey">
 [% IF errmess %]
-<div class="newsbox">
+<div class="newsbox intro">
 <p class="alert">Thanks for submitting, but unfortunately there seems to be one
 or more invalid or missing fields, as noted below by the &empty; symbol. Please
 amend the appropriate entries and resubmit your form. Thanks.</p>
@@ -106,7 +103,7 @@ amend the appropriate entries and resubmit your form. Thanks.</p>
 
 [% INCLUDE "survey/questions.html" %]
 
-<div class="newsbox">
+<div class="newsbox intro">
 <p align="center"><b>Please note that following submission of this survey, you will not be able to amend your answers or resubmit this form.</b>
 <p align="center"><input type="submit" name="submission" value="SUBMIT" />
 </div>

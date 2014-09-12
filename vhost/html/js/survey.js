@@ -34,6 +34,7 @@ function suball() {
     f.searchall.value = 1;
     f.submit();
 }
+
 function subletter(let) {
     f = document.usersearch;
     f.letter.value = let;

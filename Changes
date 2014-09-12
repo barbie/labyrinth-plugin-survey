@@ -4,6 +4,10 @@ Changes for Labyrinth-Plugin-Survey
         - list of courses/talks should not be based on room allocation.
         - added filters to only send feedback for specific talk types.
         - use actuserid to find user before name.
+        - added redirect settings to templates.
+        - restructured processing of inner template within the layout.
+        - added thanks blocks.
+        - restructured heading levels.
 
 0.05	2014-09-13
         - reworked survey sorting.

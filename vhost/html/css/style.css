@@ -201,3 +201,6 @@ a img {
 #menu a {
   text-decoration: none;
 }
+
+#closed { color: #0f0; }
+.intro { color: #caebef; }

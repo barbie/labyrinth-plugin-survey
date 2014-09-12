@@ -2,7 +2,28 @@
 
 [% IF loggedin %]
 
-<div class="newsbox">
+[% IF thanks == 1 %]
+
+<div class="newsbox intro">
+<p>Many thanks for completing your talk evaluation assessment form. The 
+results will be provided to the presenter, after the surveys close, to enable them to 
+improve the presentation for future attendees.</p>
+<p>[% yapc_host %]</p>
+</div>
+
+[% ELSIF thanks == 2 %]
+
+<div class="newsbox intro">
+<p>Many thanks for completing this survey.</p>
+<p>For an announcement of when the survey results are published, please check 
+the usual Perl news outlets or the <a href="http://yapc-surveys.org">YAPC 
+Conference Surveys</a> website.</p>
+<p>[% yapc_host %]</p>
+</div>
+
+[% ELSE %]
+
+<div class="newsbox intro">
 <p>From here you can access and complete surveys pertaining to the [% yapc_name %] Perl Conference.</p>
 <p>As you complete a survey, that survey will become unavailable, thus allowing you to keep a track of 
 what surveys you have and haven't completed. Further information about the surveys please see the
@@ -10,14 +31,19 @@ what surveys you have and haven't completed. Further information about the surve
 <p>
 Best regards,<br />
 [% yapc_host %]<br />
-[% yapc_city %]<br />
+[% yapc_city %]</p>
 </div>
 
-[% IF survey_end %]
-<div class="closed">Surveys now closed.</div>
 [% END %]
 
-<h2>Conference Survey</h2>
+[% IF survey_end %]
+<div id="closed" class="newsbox">
+<p>Surveys have now closed. Results will be on the <a href="http://yapc-surveys.org">YAPC 
+Conference Surveys</a> website soon.</p>
+</div>
+[% END %]
+
+<h3>Conference Survey</h3>
 <div class="newsbox">
 <ul>
 [% IF survey_end %]
@@ -41,7 +67,7 @@ Best regards,<br />
 </div>
 
 [% IF data.courses %]
-<h2>Course Evaluation Surveys</h2>
+<h3>Course Evaluation Surveys</h3>
 <div class="newsbox">
 [% IF ! course_start %]
 <p class="alert">Please note these surveys are unavailable until [% course_open %].</p>
@@ -71,7 +97,7 @@ Best regards,<br />
 [% END %]
 
 [% IF data.talks %]
-<h2>Talk Evaluations</h2>
+<h3>Talk Evaluations</h3>
 <div class="newsbox">
 [% IF ! talks_start %]
 <p class="alert">Please note these evaluations are unavailable until [% talks_open %].</p>
@@ -79,7 +105,7 @@ Best regards,<br />
 <p>Note that each Talk Evaluation is enabled after the the start of the talk it refers to.</p>
 [% END %]
 [%  FOREACH day = data.talks %]
-<h3>[% day.date %]</h3>
+<h4>[% day.date %]</h4>
 <ul>
 [% FOREACH item = day.talks %]
 [% IF survey_end %]

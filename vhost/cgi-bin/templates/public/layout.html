@@ -1,6 +1,9 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
+
+[% body = PROCESS $content %]
+
   <!-- Document Metadata -->
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Language" content="en" />
@@ -8,6 +11,15 @@
   <!-- Identity -->
   <title>YAPC Conference Surveys - [% yapc_name %] - [% yapc_city %] - [% yapc_date %]</title>
 
+[% IF redirect %]
+
+  <meta http-equiv="refresh" content="0;url=[% redirect %]">
+
+</head>
+<body>
+<p>saving...</p>
+
+[% ELSE %]
   <!-- CSS Stylesheets -->
   <link rel="stylesheet" type="text/css" href="/css/act-base.css">
   <link rel="stylesheet" type="text/css" href="/css/yapc-style.css">
@@ -56,7 +68,7 @@
 		<div class="normalcontent">
 
           <div id="survey-content">
-          [% INCLUDE $content %]
+          [% body %]
           </div>
 
         <div class="clear">
@@ -84,5 +96,6 @@
 </div>
 </div>
 
+[% END %]
 </body>
 </html>
