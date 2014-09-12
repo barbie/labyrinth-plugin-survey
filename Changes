@@ -8,6 +8,7 @@ Changes for Labyrinth-Plugin-Survey
         - restructured processing of inner template within the layout.
         - added thanks blocks.
         - restructured heading levels.
+        - added example apache vhost.conf.
 
 0.05	2014-09-13
         - reworked survey sorting.
