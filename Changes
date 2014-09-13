@@ -6,9 +6,10 @@ Changes for Labyrinth-Plugin-Survey
         - use actuserid to find user before name.
         - added redirect settings to templates (thanks to Roland Schmitz).
         - restructured processing of inner template within the layout.
-        - added thanks blocks.
+        - added 'thanks' blocks.
         - restructured heading levels.
         - added example apache vhost.conf.
+        - added homepage link.
 
 0.05	2014-09-13
         - reworked survey sorting.
