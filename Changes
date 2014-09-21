@@ -1,6 +1,9 @@
 Changes for Labyrinth-Plugin-Survey
 ===================================
 
+        - provide SQL to disable Talks and Users.
+        - ignore disabled users when sending announcements.
+
 0.06	2014-09-19
         - list of courses/talks should not be based on room allocation.
         - added filters to only send feedback for specific talk types.
