@@ -82,6 +82,7 @@ vhost/cgi-bin/templates/survey/talks-adminedit.html
 vhost/cgi-bin/templates/survey/talks-adminlist.html
 vhost/cgi-bin/templates/survey/welcome.html
 vhost/cgi-bin/templates/users/user-access.html
+vhost/cgi-bin/templates/users/user-act.html
 vhost/cgi-bin/templates/users/user-adminedit.html
 vhost/cgi-bin/templates/users/user-adminlist.html
 vhost/cgi-bin/templates/users/user-chng.html
