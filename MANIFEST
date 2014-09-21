@@ -73,9 +73,9 @@ vhost/cgi-bin/templates/survey/results-survey.txt
 vhost/cgi-bin/templates/survey/results-tutorials.eml
 vhost/cgi-bin/templates/survey/survey-adminlist.html
 vhost/cgi-bin/templates/survey/survey-bad.html
+vhost/cgi-bin/templates/survey/survey-disable.json
 vhost/cgi-bin/templates/survey/survey-fail.html
-vhost/cgi-bin/templates/survey/survey-disable.html
-vhost/cgi-bin/templates/survey/survey-link.html
+vhost/cgi-bin/templates/survey/survey-link.json
 vhost/cgi-bin/templates/survey/survey.html
 vhost/cgi-bin/templates/survey/survey-thanks.html
 vhost/cgi-bin/templates/survey/talks-adminedit.html
