@@ -65,6 +65,7 @@ sub DisableUser {
     my @users = $dbi->GetQuery('hash','GetUserByAct',$cgiparams{actuserid});
     return  unless(@users);             # act user not registered
     $dbi->DoQuery('hash','DisableUser',$cgiparams{actuserid});
+    $tvars{act}{disabled} = 1;
 }
 
 =head2 Talk Methods
@@ -96,6 +97,7 @@ sub DisableTalk {
     my @talks = $dbi->GetQuery('hash','FindCourseByAct',$cgiparams{acttalkid});
     return  unless(@talks);             # act talk not registered
     $dbi->DoQuery('hash','DisableTalk',$cgiparams{acttalkid});
+    $tvars{act}{disabled} = 1;
 }
 
 1;
