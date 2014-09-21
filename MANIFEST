@@ -3,6 +3,7 @@ INSTALL
 lib/Labyrinth/Plugin/Survey.pm
 lib/Labyrinth/Plugin/Survey/Act/API.pm
 lib/Labyrinth/Plugin/Survey/Announce.pm
+lib/Labyrinth/Plugin/Survey/API.pm
 lib/Labyrinth/Plugin/Survey/Course.pm
 lib/Labyrinth/Plugin/Survey/Talk.pm
 lib/Labyrinth/Plugin/Survey/YAPC.pm
