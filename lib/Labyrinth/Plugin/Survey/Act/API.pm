@@ -153,7 +153,7 @@ sub LoadUsers {
 }
 
 sub LoadTalks {
-    my (@ignore,@insert,@update);
+    my (@talks);
     my $yapc = $settings{icode};
     $tvars{counts}{$_} = 0  for(qw(insert update ignore found totals));
 
@@ -197,7 +197,7 @@ sub LoadTalks {
             }
 
             if($rows[0]->{talk} == -1) { # ignore this talk
-                push @ignore, "$rows[0]->{courseid},$title,$tutor,$talk->{room},$talk->{datetime} = $type";
+                push @talks, { status => 'IGNORE', courseid => $rows[0]->{courseid}, title => $title, tutor => $tutor, room => $talk->{room}, datetime => formatDate(21,$talk->{datetime}), timestamp => $talk->{datetime}, type => $type };
                 $tvars{counts}{ignore}++;
                 next;
             }
@@ -216,21 +216,21 @@ sub LoadTalks {
 
             if($diff) {
                 $dbi->DoQuery('SaveCourse',$title,$tutor,$talk->{room},$talk->{datetime},$type,$rows[0]->{courseid});
-                push @update, "$rows[0]->{courseid},$title,$tutor,$talk->{room},$talk->{datetime} = $type";
-                push @update, "WAS=$rows[0]->{courseid},$rows[0]->{course},$rows[0]->{tutor},$rows[0]->{room},$rows[0]->{datetime} = $rows[0]->{talk}";
-                push @update, "NOW=$rows[0]->{courseid},$title,$tutor,$talk->{room},$talk->{datetime} = $type";
+                push @talks, { status => 'UPDATE', courseid => $rows[0]->{courseid}, title => $title, tutor => $tutor, room => $talk->{room}, datetime => formatDate(21,$talk->{datetime}), timestamp => $talk->{datetime}, type => $type };
+                push @talks, { status => 'WAS', courseid => $rows[0]->{courseid}, title => $rows[0]->{course}, tutor => $rows[0]->{tutor}, room => $rows[0]->{room}, datetime => formatDate(21,$rows[0]->{datetime}), timestamp => $rows[0]->{datetime}, type => $rows[0]->{talk} };
                 $tvars{counts}{update}++;
             } else {
                 $tvars{counts}{found}++;
             }
         } else {
             my $id = $dbi->IDQuery('AddCourse',$title,$tutor,$talk->{room},$talk->{datetime},$type);
-            push @insert, "$id,$title,$tutor,$talk->{room},$talk->{datetime} = $type";
+            push @talks, { status => 'INSERT', courseid => $id, title => $title, tutor => $tutor, room => $talk->{room}, datetime => formatDate(21,$talk->{datetime}), timestamp => $talk->{datetime}, type => $type };
             $tvars{counts}{insert}++;
         }
     }
 
-    $tvars{counts}{totals} += $tvars{counts}{$_}             for(qw(insert update ignore found));
+    $tvars{data}{talks} = \@talks   if(@talks);
+    $tvars{counts}{totals} += $tvars{counts}{$_}    for(qw(insert update ignore found));
 }
 
 #----------------------------------------------------------

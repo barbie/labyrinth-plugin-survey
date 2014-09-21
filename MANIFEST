@@ -78,6 +78,7 @@ vhost/cgi-bin/templates/survey/survey-fail.html
 vhost/cgi-bin/templates/survey/survey-link.json
 vhost/cgi-bin/templates/survey/survey.html
 vhost/cgi-bin/templates/survey/survey-thanks.html
+vhost/cgi-bin/templates/survey/talks-act.html
 vhost/cgi-bin/templates/survey/talks-adminedit.html
 vhost/cgi-bin/templates/survey/talks-adminlist.html
 vhost/cgi-bin/templates/survey/welcome.html
