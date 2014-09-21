@@ -104,16 +104,33 @@ sub LoadUsers {
         @rows = $dbi->GetQuery('hash','FindUser',$user->{email})        unless(@rows);
 
         if(@rows) {
+            $tvars{counts}{all}++;
+            next    unless($rows[0]->{search}); # ignore disabled users
+            $tvars{counts}{enabled}++;
+    
             if(!$rows[0]->{actuserid} || $rows[0]->{actuserid} == 0) {
                 $dbi->DoQuery('UpdateActUser',$user->{user_id},$rows[0]->{userid});
             }
 
             if($rows[0]->{userid} > 2) {
-                my @keys = $dbi->GetQuery('hash','GetUserCode',$rows[0]->{userid});
-                $dbi->DoQuery('ConfirmUser',1,$rows[0]->{userid});
-                #print "FOUND: $name <$user->{email}> => $keys[0]->{code}/$rows[0]->{userid}/$user->{userid}\n";
                 $tvars{counts}{found}++;
+
+                # could have signed up, then been registered
+                unless($rows[0]->{code}) {
+                    my $str = $$ . $user->{email} . time();
+                    $rows[0]->{code} = sha1_hex($crypt->encrypt($str, $key));
+                    $dbi->DoQuery('SaveUserCode',$rows[0]->{code},$rows[0]->{userid});
+                    push @saved, { status => 'REGISTERED', name => $name, email => $user->{email}, link => "$rows[0]->{code}/$rows[0]->{userid}" };
+                    $tvars{counts}{registered}++;
+                }
+
+                next    if($rows[0]->{confirmed});  # already confirmed
+                $tvars{counts}{confirmed}++;
+
+                $dbi->DoQuery('ConfirmUser',1,$rows[0]->{userid});
+                push @saved, { status => 'CONFIRMED', name => $name, email => $user->{email}, link => "$rows[0]->{code}/$rows[0]->{userid}" };
             }
+
             next;
         }
 
@@ -125,7 +142,7 @@ sub LoadUsers {
         $dbi->DoQuery('ConfirmUser',1,$userid);
         $dbi->DoQuery('SaveUserCode',$code,$userid);
 
-        push @saved, "$name <$user->{email}> => $code/$userid/$user->{user_id}";
+        push @saved, { status => 'SAVED', name => $name, email => $user->{email}, link => "$code/$userid" };
         $tvars{counts}{saved}++
     }
 
