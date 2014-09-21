@@ -84,7 +84,7 @@ for my $talk (@$data) {
     my $type = check_room($talk->{room}, $talk->{datetime});
 
     my @rows;
-    @rows = $dbi->GetQuery('hash','FindCourseByAct',$talk->{talk_id})    if($talk->{talk_id});
+    @rows = $dbi->GetQuery('hash','FindCourseByAct',$talk->{talk_id})   if($talk->{talk_id});
     @rows = $dbi->GetQuery('hash','FindCourse',$title,$tutor)           unless(@rows);
 
     if(@rows) {
