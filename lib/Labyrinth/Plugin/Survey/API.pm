@@ -55,14 +55,14 @@ user.
 =cut
 
 sub GetUserLink {
-    my @users = $dbi->GetQuery('hash','GetUserByAct',$cgiparams{actuserid});
+    my @users = $dbi->GetQuery('hash','FindUserByAct',$cgiparams{actuserid});
     return  unless(@users);             # act user not registered
     return  unless($users[0]->{code});  # if no code, not a logged in user
     $tvars{act}{link} = sprintf "http://%s.yapc-surveys.org/key/%s/%d", $settings{icode}, $users[0]->{code}, $users[0]->{userid};
 }
 
 sub DisableUser {
-    my @users = $dbi->GetQuery('hash','GetUserByAct',$cgiparams{actuserid});
+    my @users = $dbi->GetQuery('hash','FindUserByAct',$cgiparams{actuserid});
     return  unless(@users);             # act user not registered
     $dbi->DoQuery('hash','DisableUser',$cgiparams{actuserid});
     $tvars{act}{disabled} = 1;

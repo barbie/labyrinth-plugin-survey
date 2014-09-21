@@ -69,7 +69,7 @@ while(<$fh>) {
         $userid = $rows[0]->{userid};
     }
     
-    @rows = $dbi->GetQuery('hash','GetUserByAct',$actuserid);
+    @rows = $dbi->GetQuery('hash','FindUserByAct',$actuserid);
     if(@rows) {
         my @keys = $dbi->GetQuery('hash','GetUserCode',$rows[0]->{userid});
         print "FOUND: $email => $keys[0]->{code}/$rows[0]->{userid}\n";
