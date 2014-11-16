@@ -18,6 +18,7 @@ WriteMakefile(
         'Class::Accessor::Fast'     => '0',
         'Crypt::Lite'               => '0',
         'Digest::SHA1'              => '0',
+        'Encode'                    => '0',
         'HTML::Entities'            => '0',
         'JSON'                      => '0',
         'Labyrinth'                 => '5.24',
