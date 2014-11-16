@@ -332,7 +332,7 @@ sub _send_announcement {
         $user->{realname} = decode_entities($user->{realname} );
 
         my $t = localtime;
-        $opts{edate}            = $t->strftime("%a, %d %b %Y %H:%M:%S +0100");
+        $opts{edate}            = formatDate(16);
         $opts{email}            = $user->{email} or next;
         $opts{recipient_email}  = $user->{email} or next;
         $opts{ename}            = $user->{realname} || '';
