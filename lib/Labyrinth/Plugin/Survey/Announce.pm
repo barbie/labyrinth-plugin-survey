@@ -30,6 +30,7 @@ use Labyrinth::Support;
 use Labyrinth::Users;
 use Labyrinth::Variables;
 
+use Encode qw/encode decode/;
 use HTML::Entities;
 use Time::Piece;
 
@@ -335,6 +336,7 @@ sub _send_announcement {
         $opts{email}            = $user->{email} or next;
         $opts{recipient_email}  = $user->{email} or next;
         $opts{ename}            = $user->{realname} || '';
+        $opts{mname}            = encode('MIME-Q', decode('MIME-Header', $opts{ename}));
 
         for my $key (qw(from subj body)) {
             $opts{$key} =~ s/ENAME/$user->{realname}/g;

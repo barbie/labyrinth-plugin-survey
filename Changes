@@ -1,6 +1,8 @@
 Changes for Labyrinth-Plugin-Survey
 ===================================
 
+        - ensure utf8 names are properly quoted and encoded.
+
 0.07	2014-09-21
         - provide SQL to disable Talks and Users.
         - ignore disabled users when sending announcements.
