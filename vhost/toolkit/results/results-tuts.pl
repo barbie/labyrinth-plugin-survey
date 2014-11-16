@@ -8,7 +8,7 @@ my $VERSION = '1.00';
 
 my ($CODE,$BASE,$LANG);
 BEGIN {
-	$BASE = '../../cgi-bin';
+    $BASE = '../../cgi-bin';
     $LANG = 'en';
 }
 
@@ -17,6 +17,7 @@ BEGIN {
 
 use lib ( "$BASE/lib", "$BASE/plugins" );
 
+use Encode qw/encode decode/;
 use File::Basename;
 use Getopt::Long;
 use HTML::Entities;
@@ -26,6 +27,7 @@ use Text::Wrap;
 use Time::Piece;
 
 use Labyrinth::Audit;
+use Labyrinth::DTUtils;
 use Labyrinth::Globals;
 use Labyrinth::Mailer;
 use Labyrinth::Variables;
@@ -274,9 +276,9 @@ sub writer {
     $vars->{email}              = $vars->{user};
     $vars->{name}               = $vars->{users}{$tvars{user}}->{name};
     $vars->{nowrap}             = 1;
-
-    $vars->{output}   = "$settings{logdir}/mailtest.eml"    unless($options{live});
-    $vars->{email}    = $options{moderator}                 if($options{test});
+    $vars->{mname}              = encode('MIME-Q', decode('MIME-Header', $vars->{name}));
+    $vars->{output}             = "$settings{logdir}/mailtest.eml"  unless($options{live});
+    $vars->{email}              = $options{moderator}               if($options{test});
 
     MailSend( %$vars );
 
@@ -285,9 +287,7 @@ sub writer {
 }
 
 sub emaildate {
-    my $self = shift;
-    my $t = localtime;
-    return $t->strftime("%a, %d %b %Y %H:%M:%S +0100");
+    return formatDate(16);
 }
 
 __END__
