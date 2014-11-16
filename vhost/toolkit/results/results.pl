@@ -1,14 +1,14 @@
 #!/usr/bin/perl -w
 use strict;
 
-my $VERSION = '1.00';
+my $VERSION = '0.08';
 
 #----------------------------------------------------------
 # Loader Variables
 
 my $BASE;
 BEGIN {
-	$BASE = '../../cgi-bin';
+    $BASE = '../../cgi-bin';
 }
 
 #----------------------------------------------------------
@@ -96,7 +96,7 @@ sub process {
 
             # Attendees - qu00000
             my $qu = 'qu00000';
-            my $q = { name => $qu, label => 'Attendees:', type => 'private', 
+            my $q = { name => $qu, label => 'Attendees:', type => 'private',
                       options => [ { key => 'Responded', value => 'Y' }, { key => 'No Response', value => 'N' }, { key => 'Total', value => 'T' }, { key => 'Response Percentage', value => 'P' } ] };
             unshift @{$section->{questions}}, $q;
 
@@ -279,7 +279,7 @@ sub write_results {
     my $target = "$CODE-$options{type}.$options{ext}";
     mkpath(dirname("$TARGET/$target"));
 
-	writer($source,$target,\%tvars,$SOURCE,$TARGET);
+    writer($source,$target,\%tvars,$SOURCE,$TARGET);
 }
 
 sub make_graph {
@@ -307,35 +307,35 @@ sub make_graph {
     #my $font = Imager::Font->new(family => 'Sans');
     my $pie = Imager::Graph::Pie->new();
     $pie->set_user_defaults(
-        minsegsize  => 0, 
-        maxsegment  => 8, 
-        otherlabel  => '(etc.)', 
-        width       => 600, 
+        minsegsize  => 0,
+        maxsegment  => 8,
+        otherlabel  => '(etc.)',
+        width       => 600,
         height      => 400
     );
 
     my $img = $pie->draw(
-        data        => $data->[1], 
+        data        => $data->[1],
         labels      => $data->[0],
-        font        => $font,      
+        font        => $font,
         style       => 'fount_lin',
         features    => [ 'legend', 'labelspconly', ],
         legend      => { valign => 'center' }
     );
-    
+
     #print "1.IMAGE: $image\n";
     return  unless($img);
     #print "2.IMAGE: $image\n";
-    
+
     $img->write(file=>$image)
-    	or die "Cannot save file [$image]: ",$img->errstr,"\n";
+        or die "Cannot save file [$image]: ",$img->errstr,"\n";
     #print "3.IMAGE: $image\n";
 
     # make thumbnail
     copy($image,$thumb);
     my $t;
     eval { $t = Labyrinth::DIUtils->new($thumb); };
-    $t->reduce(200,200)	if($t);
+    $t->reduce(200,200) if($t);
 }
 
 sub writer {
@@ -347,20 +347,20 @@ sub writer {
 
     my $layout = "$path_input/$template";
 
-    die "Missing template [$layout]\n"	unless(-e $layout);
+    die "Missing template [$layout]\n"  unless(-e $layout);
 
-    my %config = (								# provide config info
-    	RELATIVE		=> 1,
-    	ABSOLUTE		=> 1,
-    	INCLUDE_PATH	=> $path_input,
-    	OUTPUT_PATH		=> $path_output,
-    	INTERPOLATE		=> 0,
-    	POST_CHOMP		=> 1,
+    my %config = (                              # provide config info
+        RELATIVE        => 1,
+        ABSOLUTE        => 1,
+        INCLUDE_PATH    => $path_input,
+        OUTPUT_PATH     => $path_output,
+        INTERPOLATE     => 0,
+        POST_CHOMP      => 1,
     );
 
-    my $parser = Template->new(\%config);	# initialise parser
-    $parser->process($layout,$vars,$output)	# parse the template
-    	or die $parser->error();
+    my $parser = Template->new(\%config);   # initialise parser
+    $parser->process($layout,$vars,$output) # parse the template
+        or die $parser->error();
 }
 
 sub set_image_format {
@@ -381,11 +381,11 @@ results.pl - script to intepret sections of the main conference survey.
 
 =head1 DESCRIPTION
 
-Based on the arguments filters sections of the main conference survey into 
+Based on the arguments filters sections of the main conference survey into
 output files for the YAPC Surveys and organisers of the event.
 
-NOTE: The graphs produced are created by a modified version of 
-Imager::Graph::Pie, which is no longer compatible with the version on CPAN. 
+NOTE: The graphs produced are created by a modified version of
+Imager::Graph::Pie, which is no longer compatible with the version on CPAN.
 This version may appear on GitHub at some point in the future, or patches will
 be submitted for the current released version.
 
@@ -404,7 +404,7 @@ by the templates available. In most cases the default is 'html'.
 
 =item --graphs
 
-Creates the demographic graphs, providing the correct version of 
+Creates the demographic graphs, providing the correct version of
 Imager::Graph::Pie is used.
 
 =item --type=<type>
@@ -433,8 +433,8 @@ L<http://yapc-surveys.org>
 There are no known bugs at the time of this release. However, if you spot a
 bug or are experiencing difficulties that are not explained within the POD
 documentation, please submit a bug report and/or patch via RT [1], or raise
-an issue or submit a pull request via GitHub [2]. Note that it helps 
-immensely if you are able to pinpoint problems with examples, or supply a 
+an issue or submit a pull request via GitHub [2]. Note that it helps
+immensely if you are able to pinpoint problems with examples, or supply a
 patch.
 
 [1] http://rt.cpan.org/Public/Dist/Display.html?Name=Labyrinth-Plugin-Survey

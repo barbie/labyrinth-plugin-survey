@@ -1,14 +1,14 @@
 #!/usr/bin/perl -w
 use strict;
 
-my $VERSION = '1.00';
+my $VERSION = '0.08';
 
 #----------------------------------------------------------
 # Loader Variables
 
 my $BASE;
 BEGIN {
-	$BASE = '../../cgi-bin';
+    $BASE = '../../cgi-bin';
 }
 
 #----------------------------------------------------------
@@ -38,10 +38,10 @@ die "No conference code is set\n"   unless($CODE);
 my $count = 0;
 my @rs = $dbi->GetQuery('hash','NoSurvey',{where=>''});
 for my $row (@rs) {
-	next	if($row->{email} =~ /example.com/);
+    next    if($row->{email} =~ /example.com/);
 
-	$row->{name} = decode_entities($row->{realname});
-	print join(",",map {$row->{$_}} qw(userid name email code)) . "\n";
+    $row->{name} = decode_entities($row->{realname});
+    print join(",",map {$row->{$_}} qw(userid name email code)) . "\n";
     $count++;
 }
 
@@ -74,8 +74,8 @@ L<http://yapc-surveys.org>
 There are no known bugs at the time of this release. However, if you spot a
 bug or are experiencing difficulties that are not explained within the POD
 documentation, please submit a bug report and/or patch via RT [1], or raise
-an issue or submit a pull request via GitHub [2]. Note that it helps 
-immensely if you are able to pinpoint problems with examples, or supply a 
+an issue or submit a pull request via GitHub [2]. Note that it helps
+immensely if you are able to pinpoint problems with examples, or supply a
 patch.
 
 [1] http://rt.cpan.org/Public/Dist/Display.html?Name=Labyrinth-Plugin-Survey

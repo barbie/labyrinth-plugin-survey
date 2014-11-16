@@ -1,21 +1,20 @@
 #!/usr/bin/perl -w
 use strict;
 
-my $VERSION = '1.00';
+my $VERSION = '0.08';
 
 #----------------------------------------------------------
 # Loader Variables
 
 my $BASE;
 BEGIN {
-	$BASE = '../../cgi-bin';
+    $BASE = '../../cgi-bin';
 }
 
 #----------------------------------------------------------
 # Library Modules
 
 use lib ( "$BASE/lib", "$BASE/plugins" );
-
 use utf8;
 
 use Crypt::Lite;
@@ -68,7 +67,7 @@ while(<$fh>) {
         next    unless($options{update});
         $userid = $rows[0]->{userid};
     }
-    
+
     @rows = $dbi->GetQuery('hash','FindUserByAct',$actuserid);
     if(@rows) {
         my @keys = $dbi->GetQuery('hash','GetUserCode',$rows[0]->{userid});
@@ -113,7 +112,7 @@ is:
   #User Name, Email Address, ActUserID (if known)
   Test User,test@example.com,
 
-The ActUserID is the id of the user within the Act system, if known. The 
+The ActUserID is the id of the user within the Act system, if known. The
 ActUserID isn't needed generally, but it can help to verify whether a user has
 already been added to the system with a different spelling of their name, or
 different email address.
@@ -128,12 +127,12 @@ different email address.
 
 =item --update
 
-If a user is found by their email address, or actuserid if known, update the 
+If a user is found by their email address, or actuserid if known, update the
 user details with the data provided for that user.
 
 =item --nocode
 
-If the user has been found, this option will prevent a new keycode being 
+If the user has been found, this option will prevent a new keycode being
 generated.
 
 =back
@@ -149,8 +148,8 @@ L<http://yapc-surveys.org>
 There are no known bugs at the time of this release. However, if you spot a
 bug or are experiencing difficulties that are not explained within the POD
 documentation, please submit a bug report and/or patch via RT [1], or raise
-an issue or submit a pull request via GitHub [2]. Note that it helps 
-immensely if you are able to pinpoint problems with examples, or supply a 
+an issue or submit a pull request via GitHub [2]. Note that it helps
+immensely if you are able to pinpoint problems with examples, or supply a
 patch.
 
 [1] http://rt.cpan.org/Public/Dist/Display.html?Name=Labyrinth-Plugin-Survey

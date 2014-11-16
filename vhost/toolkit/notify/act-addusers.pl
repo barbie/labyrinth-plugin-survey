@@ -1,14 +1,14 @@
 #!/usr/bin/perl -w
 use strict;
 
-my $VERSION = '1.00';
+my $VERSION = '0.08';
 
 #----------------------------------------------------------
 # Loader Variables
 
 my $BASE;
 BEGIN {
-	$BASE = '../../cgi-bin';
+    $BASE = '../../cgi-bin';
 }
 
 #----------------------------------------------------------

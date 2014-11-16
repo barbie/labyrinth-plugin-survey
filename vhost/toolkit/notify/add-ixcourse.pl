@@ -1,14 +1,14 @@
 #!/usr/bin/perl -w
 use strict;
 
-my $VERSION = '1.00';
+my $VERSION = '0.08';
 
 #----------------------------------------------------------
 # Loader Variables
 
 my $BASE;
 BEGIN {
-	$BASE = '../../cgi-bin';
+    $BASE = '../../cgi-bin';
 }
 
 #----------------------------------------------------------
@@ -101,10 +101,10 @@ a CSV style file. File format is:
   #First Name, Surname, Email Address, Course ID, Course Title
   Test,User,test@example.com,0,Perl 101
 
-The course title must match one that has already been created within the 
+The course title must match one that has already been created within the
 system, unless a courseid is provided.
 
-The user's email address should match a user within the system, unless the 
+The user's email address should match a user within the system, unless the
 'create' option is used.
 
 =head1 USAGE
@@ -133,8 +133,8 @@ L<http://yapc-surveys.org>
 There are no known bugs at the time of this release. However, if you spot a
 bug or are experiencing difficulties that are not explained within the POD
 documentation, please submit a bug report and/or patch via RT [1], or raise
-an issue or submit a pull request via GitHub [2]. Note that it helps 
-immensely if you are able to pinpoint problems with examples, or supply a 
+an issue or submit a pull request via GitHub [2]. Note that it helps
+immensely if you are able to pinpoint problems with examples, or supply a
 patch.
 
 [1] http://rt.cpan.org/Public/Dist/Display.html?Name=Labyrinth-Plugin-Survey

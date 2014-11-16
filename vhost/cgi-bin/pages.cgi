@@ -25,7 +25,7 @@ generate a YAPC survey website.
 
 use lib qw|. ./lib ./plugins|;
 
-#use CGI::Carp			qw(fatalsToBrowser);
+#use CGI::Carp          qw(fatalsToBrowser);
 
 use Labyrinth;
 
