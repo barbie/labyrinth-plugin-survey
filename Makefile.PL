@@ -29,8 +29,20 @@ WriteMakefile(
         'WWW::Mechanize'            => '0',
         'YAML'                      => '0',
 
-        # build/test prereqs
+        # toolkit scripts
+        'utf8'                      => '0',
+        'Data::Dumper'              => '0',
+        'File::Basename'            => '0',
+        'File::Copy'                => '0',
+        'File::Path'                => '0',
+        'Getopt::Long'              => '0',
+        'Imager'                    => '0',
+        'Imager::Graph::Pie'        => '0',
         'IO::File'                  => '0',
+        'Template'                  => '0',
+        'Text::Wrap'                => '0',
+
+        # build/test prereqs
         'Test::More'                => '0.70'
 
     }

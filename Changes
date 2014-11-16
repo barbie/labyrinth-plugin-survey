@@ -4,6 +4,7 @@ Changes for Labyrinth-Plugin-Survey
         - ensure utf8 names are properly quoted and encoded.
         - fix date formating for emails.
         - update speaker evaluation emails for dates and encodings.
+        - include prerequisites for toolkit scripts.
 
 0.07	2014-09-21
         - provide SQL to disable Talks and Users.
