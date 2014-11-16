@@ -8,7 +8,7 @@ use ExtUtils::MakeMaker;
 
 WriteMakefile(
     AUTHOR              => 'Barbie <barbie@cpan.org>',
-    NAME                => 'Labyrinth-Plugin-Survey',
+    NAME                => 'Labyrinth::Plugin::Survey',
     VERSION_FROM        => 'lib/Labyrinth/Plugin/Survey.pm',
     ABSTRACT            => 'YAPC Surveys plugin for the Labyrinth framework',
     NO_META             => 1,
