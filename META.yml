@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                     Labyrinth-Plugin-Survey
-version:                  0.07
+version:                  0.08
 abstract:                 YAPC Surveys plugin for the Labyrinth framework
 author:
   - Barbie <barbie@cpan.org>
@@ -24,17 +24,17 @@ requires:
   Time::Piece:              0
   WWW::Mechanize:           0
   YAML:                     0
-  utf8:                     0  
-  Data::Dumper:             0  
-  File::Basename:           0  
-  File::Copy:               0  
-  File::Path:               0  
-  Getopt::Long:             0  
-  Imager:                   0  
-  Imager::Graph::Pie:       0  
-  IO::File:                 0  
-  Template:                 0  
-  Text::Wrap:               0  
+  utf8:                     0
+  Data::Dumper:             0
+  File::Basename:           0
+  File::Copy:               0
+  File::Path:               0
+  Getopt::Long:             0
+  Imager:                   0
+  Imager::Graph::Pie:       0
+  IO::File:                 0
+  Template:                 0
+  Text::Wrap:               0
 recommends:
   Test::CPAN::Meta:         0
   Test::CPAN::Meta::JSON:   0
@@ -46,22 +46,22 @@ build_requires:
 provides:
   Labyrinth::Plugin::Survey:
     file:     lib/Labyrinth/Plugin/Survey.pm
-    version:  0.07
+    version:  0.08
   Labyrinth::Plugin::Survey::Act::API:
     file:     lib/Labyrinth/Plugin/Survey/Act/API.pm
-    version:  0.07
+    version:  0.08
   Labyrinth::Plugin::Survey::Announce:
     file:     lib/Labyrinth/Plugin/Survey/Announce.pm
-    version:  0.07
+    version:  0.08
   Labyrinth::Plugin::Survey::Course:
     file:     lib/Labyrinth/Plugin/Survey/Course.pm
-    version:  0.07
+    version:  0.08
   Labyrinth::Plugin::Survey::Talk:
     file:     lib/Labyrinth/Plugin/Survey/Talk.pm
-    version:  0.07
+    version:  0.08
   Labyrinth::Plugin::Survey::YAPC:
     file:     lib/Labyrinth/Plugin/Survey/YAPC.pm
-    version:  0.07
+    version:  0.08
 
 no_index:
   directory:
